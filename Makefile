@@ -31,7 +31,7 @@ AST_VER_HDR=$(AST_INC_DIR)/version.h
 
 CFLAGS=-I${SWIFT_DIR}/include -I${SYS_INC_DIR} -g -Wall -fPIC
 LDFLAGS=-L${SWIFT_DIR}/lib -L${SYS_LIB_DIR} -lswift $(patsubst ${SWIFT_DIR}/lib/lib%.so,-l%,$(wildcard ${SWIFT_DIR}/lib/libcep*.so))
-SOLINK=-shared -Xlinker -x -Wl --no-as-needed
+SOLINK=-shared -Xlinker -x -Wl,--no-as-needed
 
 CFLAGS+=-D_SWIFT_VER_$(shell \
 	swift --version | grep "Cepstral Swift " - | sed -e "s/Cepstral\ Swift\ //" - | awk -F. '{printf "%01d", $$1}' -; \
